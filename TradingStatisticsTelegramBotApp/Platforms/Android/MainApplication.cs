@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Runtime;
+using TradingStatisticsTelegramBotCore;
 
 namespace TradingStatisticsTelegramBotApp;
 
@@ -11,5 +12,9 @@ public class MainApplication : MauiApplication
     {
     }
 
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    protected override MauiApp CreateMauiApp()
+    {
+        Configuration.IsAndroidPlatform = true;
+        return MauiProgram.CreateMauiApp();
+    }
 }

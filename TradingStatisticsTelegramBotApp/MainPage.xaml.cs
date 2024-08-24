@@ -12,13 +12,16 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         
+        WTelegram.Helpers.Log = DefaultLogger;
+        
         _cts = new CancellationTokenSource();
         _botProcessor = new BotProcessor();
+        _botProcessor.Start(_cts, VerificationCodeGetter);
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    private void OnCounterClicked(object sender, EventArgs e)
     {
-        await _botProcessor.Start(_cts);
+        _btnClicked = true;
         
         count++;
 
@@ -28,5 +31,24 @@ public partial class MainPage : ContentPage
             CounterBtn.Text = $"Clicked {count} times";
 
         SemanticScreenReader.Announce(CounterBtn.Text);
+    }
+
+    private bool _btnClicked = false;
+    
+    private async Task<string> VerificationCodeGetter()
+    {
+        while (_btnClicked == false)
+        {
+            
+        }
+        
+        return TelegramCodeEntry.Text;
+    }
+    
+    private static void DefaultLogger(int level, string message)
+    {
+        //Console.ForegroundColor = LogLevelToColor[level];
+        System.Diagnostics.Debug.WriteLine(message);
+        //Console.ResetColor();
     }
 }
