@@ -69,6 +69,8 @@
       <Reference Include="TradingStatisticsTelegramBotCore">
         <HintPath>..\TradingStatisticsTelegramBotCore.dll</HintPath>
       </Reference>
+        <Reference Include="C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.8\*.dll" Exclude="C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.8ё\aspnetcorev2_inprocess.dll">
+        </Reference>
       <Reference Include="WTelegramClient">
         <HintPath>..\WTelegramClient.dll</HintPath>
       </Reference>
